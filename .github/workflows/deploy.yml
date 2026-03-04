@@ -22,10 +22,9 @@ jobs:
         env:
           SSH_KEY: ${{secrets.SSH_PRIVATE_KEY}}
         run: |
-          echo "$SSH_KEY" > private_key.pem
-          chmod 400 private_key.pem
+          echo "$SSH_KEY" > my_assignment.pem
+          chmod 400 my_assignment.pem
           ansible-playbook -i inventory.ini playbook.yml \
             --user ubuntu \
-            --private-key private_key.pem \
+            --private-key my_assignment.pem \
             --extra-vars "ansible_ssh_common_args='-o StrictHostKeyChecking=no'"
-            
